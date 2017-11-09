@@ -1,0 +1,31 @@
+extends layout
+
+block content
+
+  a(class="retour" href="/") ← Retour aux produits
+	form(method="POST" enctype="multipart/form-data" action="/admin/create-personne")
+		h1 Sign up for the wilder to wish you a happy birthday
+		
+		br
+		p Nom du produit : 
+		input(type="text" name="hack_name" placeholder="Nom" value=body.hack_name size="50" maxlength="50")
+		br
+		br
+		p Prénom : 
+		input(type="text" name="hack.firstname" placeholder="Prénom" value=body.hack.firstname size="50" maxlength="250")
+		br
+		br
+		p Date d'anniversaire :
+    input(type="text" name="hack.birthday" placeholder="AAAA-MM-JJ" value=body.hack.birthday size="50" maxlength="250")
+		br
+		p Ville : 
+    input(type="text" name="hack.city" placeholder="Ville" value=body.hack.city size="50" maxlength="250")
+		br
+    p Code Postal: 
+    input(type="text" name="hack.code" placeholder="Code Postal" value=body.hack.code size="50" maxlength="250")
+		br
+    p E-mail: 
+    input(type="text" name="hack.mail" placeholder="google.goole@google.com" value=body.hack.mail size="50" maxlength="250")
+
+		br
+		button(class="place" type="submit") Enregistrer
