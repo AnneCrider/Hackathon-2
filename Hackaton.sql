@@ -38,13 +38,13 @@ DEFAULT CHARACTER SET = latin1;
 -- -----------------------------------------------------
 -- Table `Hackaton`.`E-mail`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Hackaton`.`E-mail` (
-  `idE-mail` INT(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE IF NOT EXISTS `Hackaton`.`Email` (
+  `idEmail` INT(11) NOT NULL AUTO_INCREMENT,
   `mail` VARCHAR(150) NULL DEFAULT NULL,
   `Personnes_idPersonnes` INT(11) NOT NULL,
-  PRIMARY KEY (`idE-mail`),
-  INDEX `fk_E-mail_Personnes_idx` (`Personnes_idPersonnes` ASC),
-  CONSTRAINT `fk_E-mail_Personnes`
+  PRIMARY KEY (`idEmail`),
+  INDEX `fk_Email_Personnes_idx` (`Personnes_idPersonnes` ASC),
+  CONSTRAINT `fk_Email_Personnes`
     FOREIGN KEY (`Personnes_idPersonnes`)
     REFERENCES `Hackaton`.`Personnes` (`idPersonnes`)
     ON DELETE NO ACTION

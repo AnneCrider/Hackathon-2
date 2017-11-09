@@ -12,12 +12,12 @@ connection.connect();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  connection.query('SELECT * FROM Personnes;', function (error, results, fields) {
+  connection.query('SELECT idPersonnes FROM Personnes LEFT JOIN Email ON Personnes.idPersonnes = Email.Personnes_idPersonnes;', function (error, results, fields) {
 		if (error) throw error;
 		console.log(results);
 		res.render('index',{hackaton:results});
 	});
-  
+
 });
 
 
