@@ -1,41 +1,40 @@
 const express = require('express');
 const router = express.Router();
 const mysql = require('mysql');
-const multer  = require('multer');
-const fs = require('fs');
-const upload = multer({ dest: 'tmp/' });
 const config = require('../config.js');
 
 const connection = mysql.createConnection(config);
 
 connection.connect();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  connection.query('SELECT idPersonnes FROM Personnes LEFT JOIN Email ON Personnes.idPersonnes = Email.Personnes_idPersonnes;', function (error, results, fields) {
-		if (error) throw error;
-		console.log(results);
-		res.render('index',{hackaton:results});
-	});
-
+/*login*/
+router.get('/login' ,function(req, res, next){
+  res.render('login')
 });
 
 
-/*Ajout dans la BDD*/
-router.get('/create', function(req, res, next) {
-	res.render('index');
+// /login
+router.post('/login', function(req, res, next) {
+  console.log(req.body);
+  let name = req.body.login;
+  let pass = req.body.password;
+  console.log(name, pass);
+  connection.query('SELECT * FROM Personnes WHERE email = ? AND password = ? ;',[name, pass],function (error, results, fields) {
+    if (error) throw error;
+    if (results.length === 0) {
+      res.redirect('/');
+    } else {
+      req.session.connected = true;
+      req.session.cookie.maxAge = 3600000; // 1 heure
+      console.log(req.session);
+      res.redirect('/admin');
+    }
+  });
 });
 
-// POST /admin/create-product
-router.post('/create-personne', function(req, res, next) {
-	console.log(req.body)
-// Ajouter un produit dans la table 'products'
-		connection.query('insert into Personnes values(null, ?, ?, ?, ?, ?, ?);',
-				[req.body.hack_name, req.body.hack_firstname, req.body.hack_birthday, req.file.body.hack_city, req.body.hack_code, req.body.hack_mail],
-				function (error, results, fields) {
-					if (error) throw error;
-					res.redirect('/');
-					//console.log(results);
-		});
+// /logout
+router.get('/logout', function(req, res, next) {
+  req.session.destroy(function(err) {
+    res.redirect('/');
+  });
 });
-module.exports = router;

@@ -4,7 +4,7 @@ block content
   h1 Welcome to the Wild Code School 
   img(src='images/deer2.fw.png', alt='pain')
   p Can you fill the table :
-  a(class="retour" href="/create-personne") Ajouter une date
+  a(class="retour" href="/create") Add a date
   table.table.text-center.table-striped
     tr
       th #
@@ -27,6 +27,6 @@ block content
         td= hack.code
         td= hack.mail
         td 
-          a(href="/admin/modify?id=" + hack.idPersonnes class="btn btn-info") Modifier
+          a(href="/modify?id=" + hack.idPersonnes class="btn btn-info") Modifier
         td  
-          a(href="/admin/delete-product?id=" + hack.idPersonnes onclick="return confirm('Voulez-vous vraiment supprimer?');" class="btn btn-warning") Supprimer
+          a(href="/delete?id=" + hack.idPersonnes onclick="return confirm('Voulez-vous vraiment supprimer?');" class="btn btn-warning") Supprimer
