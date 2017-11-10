@@ -6,6 +6,7 @@ const fs = require('fs');
 const upload = multer({ dest: 'tmp/' });
 const config = require('../config.js');
 
+
 const connection = mysql.createConnection(config);
 
 connection.connect();
@@ -30,7 +31,7 @@ router.post('/admin-create', function(req, res, next) {
 	console.log(req.body)
 // Ajouter un produit dans la table 'products'
 		connection.query('insert into Personnes values(null, ?, ?, ?, ?, ?, ?);',
-				[req.body.hack_name, req.body.hack_firstname, req.body.hack_birthday, req.file.body.hack_city, req.body.hack_code, req.body.hack_mail],
+				[req.body.hack_name, req.body.hack_firstname, req.body.hack_birthday, req.body.hack_city, req.body.hack_code, req.body.hack_mail],
 				function (error, results, fields) {
 					if (error) throw error;
 					res.redirect('/');

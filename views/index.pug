@@ -2,7 +2,25 @@ extends layout
 
 block content
   h1 Welcome to the Wild Code School 
-  img(src='images/deer2.fw.png', alt='pain')
-  h2 To fill the table, you must register on the site.
+  p In this school, we code in sockets and we are a family. So we wish the birthday.
+  div.heure
+  div.date
   
-  button.button-formulaire(type="submit" href='formulaire') Inscription
+
+  h2 Birthday 
+
+  
+  h2 Météo
+  form
+    .form-group
+      label(for='nameCity') Enter the name of your city
+      input#nameCity.form-control(type='text', placeholder='Enter the name', value='Papeete')
+      button OK
+    #resultat
+    img#weatherIcon
+    script(src='/javascripts/app.js')
+    
+  h2 Maps
+  
+  
+  
