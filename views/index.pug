@@ -3,12 +3,13 @@ extends layout
 block content
   h1 Welcome to the Wild Code School 
   p In this school, we code in sockets and we are a family. So we wish the birthday.
-  div.heure
+  p Today we are the :
   div.date
+  div.heure
   
 
   h2 Birthday 
-
+  p Today it's the birthday at :
   
   h2 Météo
   form
@@ -21,6 +22,8 @@ block content
     script(src='/javascripts/app.js')
     
   h2 Maps
-  
+  p If you want found a bar, click on the map.
+    br
+    iframe(width='600', height='450', frameborder='0', style='border:0', src='https://www.google.com/maps/embed/v1/place?key=AIzaSyATcbvaAwSAIjAyjQxplevI6OiS01Yo8RQ&q=11+rue+de+Poissy,Paris+France', allowfullscreen='')
   
   

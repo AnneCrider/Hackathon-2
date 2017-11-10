@@ -23,8 +23,32 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+const Session = require('express-session');
+const FileStore = require('session-file-store')(Session);
+app.use(Session({
+store: new FileStore({
+path: path.join(__dirname, '/tmp'),
+encrypt: true
+}),
+secret: 'Super Secret !',
+resave: true,
+saveUninitialized: true,
+name : 'mysession'
+}));
+
 app.use('/', index);
+app.use('/',function(req,res,next){
+  if(req.session.connected){
+    return next();
+  }else{
+    return res.redirect('/login')
+  }
+});
 app.use('/users', users);
+//sessions
+
+
+
 
 app.use('/admin', function (req, res, next) {
   console.log(req.session);

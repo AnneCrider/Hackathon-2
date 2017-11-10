@@ -32,29 +32,31 @@ router.post('/create-personne', function(req, res, next){
 /*login*/
 router.get('/login' ,function(req, res, next){
   res.render('login')
-});
+  });
 
 
 // /login
 router.post('/login', function(req, res, next) {
   console.log(req.body);
-  let name = req.body.login;
+  let email = req.body.mail;
   let pass = req.body.password;
-  console.log(name, pass);
-  connection.query('SELECT * FROM Personnes WHERE email = ? AND password = ? ;',[name, pass], function (error, results, fields) {
-    if (error) throw error;
+  // console.log(name, pass);
+  connection.query('SELECT * FROM Personnes WHERE email = "'  + email + '" AND password = "' + pass +'";', function (error, results, fields) {
+      //console.log('SELECT * FROM Personnes WHERE email = "'  + email + '" AND password = "' + pass +'";');
+    if (error) {
+      console.log(error);
+    }
     if (results.length === 0) {
       res.redirect('/');
-    } else {
-      req.session.connected = true;
-      req.session.cookie.maxAge = 3600000; // 1 heure
-      console.log(req.session);
-      res.redirect('/admin');
+    }else{
+      req.session.connect = true;
+      res.redirect('/admin')
     }
   });
 });
 
-// /logout
+
+// logout
 router.get('/logout', function(req, res, next) {
   req.session.destroy(function(err) {
     res.redirect('/');

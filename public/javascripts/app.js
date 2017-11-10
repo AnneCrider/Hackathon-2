@@ -26,6 +26,8 @@ req.open("GET", url);
 req.send(null);
 });
 
+
+/*Heure*/
 let heure;
 setInterval(function(){
 heure = new  Date();
