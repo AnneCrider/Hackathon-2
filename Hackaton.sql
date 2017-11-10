@@ -23,7 +23,7 @@ USE `Hackaton` ;
 -- -----------------------------------------------------
 -- Table `Hackaton`.`Personnes`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `Hackaton`.`Personnes` (
+CREATE TABLE IF NOT EXISTS `Personnes` (
   `idPersonnes` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `firstname` VARCHAR(45) NULL DEFAULT NULL,
