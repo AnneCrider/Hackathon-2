@@ -7,6 +7,10 @@ const connection = mysql.createConnection(config);
 
 connection.connect();
 
+router.get('/' ,function(req, res, next){
+   res.render('index');
+ });
+
 /*login*/
 router.get('/login' ,function(req, res, next){
   res.render('login')
@@ -19,7 +23,7 @@ router.post('/login', function(req, res, next) {
   let name = req.body.login;
   let pass = req.body.password;
   console.log(name, pass);
-  connection.query('SELECT * FROM Personnes WHERE email = ? AND password = ? ;',[name, pass],function (error, results, fields) {
+  connection.query('SELECT * FROM Personnes WHERE email = ? AND password = ? ;',function (error, results, fields) {
     if (error) throw error;
     if (results.length === 0) {
       res.redirect('/');
@@ -38,3 +42,4 @@ router.get('/logout', function(req, res, next) {
     res.redirect('/');
   });
 });
+module.exports = router;

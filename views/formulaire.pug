@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  form(method="POST" enctype="multipart/form-data" action="/admin/create-personne")
+  h1 Sign up for the wilder to wish you a happy birthday
+
+  br 
+  p Name *: 
+  input(type="text" name="hack.name" placeholder="Nom"  size="50" maxlength="50")
+  br
+  br
+  p Firstname *: 
+  input(type="text" name="hack.firstname" placeholder="Prénom"  size="50" maxlength="250")
+  br
+  br
+  p Birthday *:
+  input(type="text" name="hack.birthday" placeholder="AAAA-MM-JJ"  size="50" maxlength="250")
+  br
+  br
+  p City *: 
+  input(type="text" name="hack.city" placeholder="Ville" size="50" maxlength="250")
+  br
+  br
+  p Postal code *: 
+  input(type="text" name="hack.code" placeholder="Code Postal"  size="50" maxlength="250")
+  br
+  br
+  p E-mail *: 
+  input(type="text" name="hack.mail" placeholder="google.goole@google.com"  size="50" maxlength="250")
+  br
+  br
+  button(class="place" type="submit") Enregistrer
